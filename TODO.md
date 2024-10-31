@@ -1,4 +1,4 @@
-# Platformer-Game-PixiJS
+# Platformer-Game
 
 - [x] Project setup
 - [ ] Gravity
