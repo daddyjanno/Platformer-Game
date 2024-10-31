@@ -1,7 +1,7 @@
 # Platformer-Game
 
 - [x] Project setup
-- [ ] Gravity
+- [x] Gravity
 - [ ] Player movement
 - [ ] Background sprite
 - [ ] Collision blocks
