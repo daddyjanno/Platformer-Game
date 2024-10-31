@@ -1,7 +1,6 @@
 # Platformer-Game-PixiJS
 
 - [x] Project setup
-- [ ] Domain setup
 - [ ] Gravity
 - [ ] Player movement
 - [ ] Background sprite
