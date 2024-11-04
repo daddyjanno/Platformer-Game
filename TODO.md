@@ -6,7 +6,7 @@
 - [x] Background sprite
 - [x] Collision blocks
 - [x] Collision detection
-- [ ] Sprite animation
+- [x] Sprite animation
 - [ ] Hitbox implementation
 - [ ] Sprite swapping
 - [ ] Platform jumping
