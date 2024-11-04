@@ -3,7 +3,7 @@
 - [x] Project setup
 - [x] Gravity
 - [x] Player movement
-- [ ] Background sprite
+- [x] Background sprite
 - [ ] Collision blocks
 - [ ] Collision detection
 - [ ] Sprite animation
