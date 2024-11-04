@@ -1,6 +1,5 @@
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
-console.log(context);
 
 canvas.width = 1024;
 canvas.height = 576;
@@ -77,6 +76,23 @@ const scaledCanvas = {
   width: canvas.width / 4,
   height: canvas.height / 4,
 };
+
+console.log(floorCollisions);
+
+const floorCollisions2D = [];
+
+for (let i = 0; i < floorCollisions.length; i += 36) {
+  floorCollisions2D.push(floorCollisions.slice(i, i + 36));
+}
+// console.log(floorCollisions2D);
+
+floorCollisions2D.forEach((row) => {
+  row.forEach((symbol) => {
+    if (symbol === 202) {
+      console.log("block");
+    }
+  });
+});
 
 function animate() {
   window.requestAnimationFrame(animate);
