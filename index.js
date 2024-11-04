@@ -6,8 +6,13 @@ canvas.height = 576;
 
 const gravity = 0.5;
 
-const player = new Player({ x: 0, y: 0 });
-const player2 = new Player({ x: 200, y: 0 });
+const collisionBlocks = [];
+const platformCollisionBlocks = [];
+
+const player = new Player({
+  position: { x: 100, y: 0 },
+  collisionBlocks,
+});
 
 const keys = {
   right: {
@@ -42,9 +47,6 @@ const platformCollisions2D = [];
 for (let i = 0; i < platformCollisions.length; i += 36) {
   platformCollisions2D.push(platformCollisions.slice(i, i + 36));
 }
-
-const collisionBlocks = [];
-const platformCollisionBlocks = [];
 
 floorCollisions2D.forEach((row, y) => {
   row.forEach((symbol, x) => {
@@ -92,17 +94,15 @@ function animate() {
   platformCollisionBlocks.forEach((collisionBlock) => {
     collisionBlock.update();
   });
-  context.restore();
-
   player.update();
-  player2.update();
 
   player.velocity.x = 0;
   if (keys.right.pressed) {
-    player.velocity.x = 5;
+    player.velocity.x = 3;
   } else if (keys.left.pressed) {
-    player.velocity.x = -5;
+    player.velocity.x = -3;
   }
+  context.restore();
 }
 animate();
 
@@ -115,7 +115,7 @@ window.addEventListener("keydown", (event) => {
       keys.left.pressed = true;
       break;
     case "ArrowUp":
-      player.velocity.y = -15;
+      player.velocity.y = -8;
       break;
 
     default:
