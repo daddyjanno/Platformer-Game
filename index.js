@@ -10,7 +10,7 @@ const collisionBlocks = [];
 const platformCollisionBlocks = [];
 
 const player = new Player({
-  position: { x: 100, y: 0 },
+  position: { x: 100, y: 300 },
   collisionBlocks,
   imageSrc: "./img/warrior/Idle.png",
   frameRate: 8,
