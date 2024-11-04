@@ -44,6 +44,7 @@ for (let i = 0; i < platformCollisions.length; i += 36) {
 }
 
 const collisionBlocks = [];
+const platformCollisionBlocks = [];
 
 floorCollisions2D.forEach((row, y) => {
   row.forEach((symbol, x) => {
@@ -62,7 +63,7 @@ floorCollisions2D.forEach((row, y) => {
 platformCollisions2D.forEach((row, y) => {
   row.forEach((symbol, x) => {
     if (symbol === 202) {
-      collisionBlocks.push(
+      platformCollisionBlocks.push(
         new CollisionBlock({
           position: {
             x: x * 16,
@@ -86,6 +87,9 @@ function animate() {
   context.translate(0, -background.image.height + scaledCanvas.height);
   background.update();
   collisionBlocks.forEach((collisionBlock) => {
+    collisionBlock.update();
+  });
+  platformCollisionBlocks.forEach((collisionBlock) => {
     collisionBlock.update();
   });
   context.restore();
