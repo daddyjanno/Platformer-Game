@@ -25,6 +25,7 @@ class Player extends Sprite {
     };
 
     this.animations = animations;
+    this.lastDirection = "right";
 
     for (let key in animations) {
       const image = new Image();
@@ -48,17 +49,17 @@ class Player extends Sprite {
     this.updateHitbox();
 
     // draws out hte image
-    context.fillStyle = "rgba(0, 255, 0, 0.2)";
-    context.fillRect(this.position.x, this.position.y, this.width, this.height);
+    // context.fillStyle = "rgba(0, 255, 0, 0.2)";
+    // context.fillRect(this.position.x, this.position.y, this.width, this.height);
 
     // draws out the hitbox
-    context.fillStyle = "rgba(255, 0, 0, 0.2)";
-    context.fillRect(
-      this.hitbox.position.x,
-      this.hitbox.position.y,
-      this.hitbox.width,
-      this.hitbox.height
-    );
+    // context.fillStyle = "rgba(255, 0, 0, 0.2)";
+    // context.fillRect(
+    //   this.hitbox.position.x,
+    //   this.hitbox.position.y,
+    //   this.hitbox.width,
+    //   this.hitbox.height
+    // );
     this.draw();
 
     this.position.x += this.velocity.x;
@@ -115,6 +116,9 @@ class Player extends Sprite {
 
   applyGravity() {
     this.velocity.y += gravity;
+    if (this.velocity.y > 3) {
+      this.velocity.y = 3;
+    }
     this.position.y += this.velocity.y;
   }
 
