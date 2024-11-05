@@ -140,19 +140,33 @@ function animate() {
 
   player.velocity.x = 0;
   if (keys.right.pressed) {
+    player.lastDirection = "right";
     player.switchSprite("Run");
     player.velocity.x = 2;
   } else if (keys.left.pressed) {
+    player.lastDirection = "left";
     player.switchSprite("RunLeft");
     player.velocity.x = -2;
   } else if (player.velocity.y === 0) {
-    player.switchSprite("Idle");
+    if (player.lastDirection === "right") {
+      player.switchSprite("Idle");
+    } else {
+      player.switchSprite("IdleLeft");
+    }
   }
 
   if (player.velocity.y < 0) {
-    player.switchSprite("Jump");
+    if (player.lastDirection === "right") {
+      player.switchSprite("Jump");
+    } else {
+      player.switchSprite("JumpLeft");
+    }
   } else if (player.velocity.y > 0) {
-    player.switchSprite("Fall");
+    if (player.lastDirection === "right") {
+      player.switchSprite("Fall");
+    } else {
+      player.switchSprite("FallLeft");
+    }
   }
   context.restore();
 }
@@ -167,7 +181,7 @@ window.addEventListener("keydown", (event) => {
       keys.left.pressed = true;
       break;
     case "ArrowUp":
-      player.velocity.y = -8;
+      player.velocity.y = -5;
       break;
 
     default:
