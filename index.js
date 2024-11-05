@@ -14,6 +14,32 @@ const player = new Player({
   collisionBlocks,
   imageSrc: "./img/warrior/Idle.png",
   frameRate: 8,
+  animations: {
+    Idle: {
+      imageSrc: "./img/warrior/Idle.png",
+      frameRate: 8,
+    },
+    IdleLeft: {
+      imageSrc: "./img/warrior/IdleLeft.png",
+      frameRate: 8,
+    },
+    Run: {
+      imageSrc: "./img/warrior/Run.png",
+      frameRate: 8,
+    },
+    RunLeft: {
+      imageSrc: "./img/warrior/RunLeft.png",
+      frameRate: 8,
+    },
+    Jump: {
+      imageSrc: "./img/warrior/Jump.png",
+      frameRate: 2,
+    },
+    JumpLeft: {
+      imageSrc: "./img/warrior/JumpLeft.png",
+      frameRate: 2,
+    },
+  },
 });
 
 const keys = {
@@ -79,8 +105,6 @@ platformCollisions2D.forEach((row, y) => {
   });
 });
 
-console.log(collisionBlocks);
-
 function animate() {
   window.requestAnimationFrame(animate);
   context.fillStyle = "white";
@@ -100,6 +124,7 @@ function animate() {
 
   player.velocity.x = 0;
   if (keys.right.pressed) {
+    player.switchSprite("Run");
     player.velocity.x = 3;
   } else if (keys.left.pressed) {
     player.velocity.x = -3;
