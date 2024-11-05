@@ -150,12 +150,8 @@ function animate() {
   }
 
   if (player.velocity.y < 0) {
-    console.log("jump");
-
     player.switchSprite("Jump");
   } else if (player.velocity.y > 0) {
-    console.log("fall");
-
     player.switchSprite("Fall");
   }
   context.restore();
