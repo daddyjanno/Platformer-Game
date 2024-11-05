@@ -8,7 +8,7 @@
 - [x] Collision detection
 - [x] Sprite animation
 - [x] Hitbox implementation
-- [ ] Sprite swapping
+- [x] Sprite swapping
 - [ ] Platform jumping
 - [ ] Horizontal camera panning
 - [ ] Vertical camera panning
