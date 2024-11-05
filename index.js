@@ -18,26 +18,32 @@ const player = new Player({
     Idle: {
       imageSrc: "./img/warrior/Idle.png",
       frameRate: 8,
+      frameBuffer: 5,
     },
     IdleLeft: {
       imageSrc: "./img/warrior/IdleLeft.png",
       frameRate: 8,
+      frameBuffer: 5,
     },
     Run: {
       imageSrc: "./img/warrior/Run.png",
       frameRate: 8,
+      frameBuffer: 4,
     },
     RunLeft: {
       imageSrc: "./img/warrior/RunLeft.png",
       frameRate: 8,
+      frameBuffer: 4,
     },
     Jump: {
       imageSrc: "./img/warrior/Jump.png",
       frameRate: 2,
+      frameBuffer: 0,
     },
     JumpLeft: {
       imageSrc: "./img/warrior/JumpLeft.png",
       frameRate: 2,
+      frameBuffer: 0,
     },
   },
 });
@@ -125,9 +131,12 @@ function animate() {
   player.velocity.x = 0;
   if (keys.right.pressed) {
     player.switchSprite("Run");
-    player.velocity.x = 3;
+    player.velocity.x = 2;
   } else if (keys.left.pressed) {
-    player.velocity.x = -3;
+    player.switchSprite("RunLeft");
+    player.velocity.x = -2;
+  } else if (player.velocity.y === 0) {
+    player.switchSprite("Idle");
   }
   context.restore();
 }
