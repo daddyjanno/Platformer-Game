@@ -28,22 +28,32 @@ const player = new Player({
     Run: {
       imageSrc: "./img/warrior/Run.png",
       frameRate: 8,
-      frameBuffer: 4,
+      frameBuffer: 5,
     },
     RunLeft: {
       imageSrc: "./img/warrior/RunLeft.png",
       frameRate: 8,
-      frameBuffer: 4,
+      frameBuffer: 5,
     },
     Jump: {
       imageSrc: "./img/warrior/Jump.png",
       frameRate: 2,
-      frameBuffer: 0,
+      frameBuffer: 3,
     },
     JumpLeft: {
       imageSrc: "./img/warrior/JumpLeft.png",
       frameRate: 2,
-      frameBuffer: 0,
+      frameBuffer: 3,
+    },
+    Fall: {
+      imageSrc: "./img/warrior/Fall.png",
+      frameRate: 2,
+      frameBuffer: 3,
+    },
+    FallLeft: {
+      imageSrc: "./img/warrior/FallLeft.png",
+      frameRate: 2,
+      frameBuffer: 3,
     },
   },
 });
@@ -137,6 +147,16 @@ function animate() {
     player.velocity.x = -2;
   } else if (player.velocity.y === 0) {
     player.switchSprite("Idle");
+  }
+
+  if (player.velocity.y < 0) {
+    console.log("jump");
+
+    player.switchSprite("Jump");
+  } else if (player.velocity.y > 0) {
+    console.log("fall");
+
+    player.switchSprite("Fall");
   }
   context.restore();
 }
