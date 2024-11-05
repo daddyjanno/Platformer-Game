@@ -1,11 +1,46 @@
 class Player extends Sprite {
-  constructor({ position, collisionBlocks, imageSrc, frameRate, scale = 0.5 }) {
+  constructor({
+    position,
+    collisionBlocks,
+    imageSrc,
+    frameRate,
+    scale = 0.5,
+    animations,
+  }) {
     super({ imageSrc, frameRate, scale });
     this.position = position;
     this.velocity = {
       x: 0,
       y: 1,
     };
+    this.collisionBlocks = collisionBlocks;
+
+    this.hitbox = {
+      position: {
+        x: this.position.x,
+        y: this.position.y,
+      },
+      width: 10,
+      height: 10,
+    };
+
+    this.animations = animations;
+
+    for (let key in animations) {
+      const image = new Image();
+      image.src = animations[key].imageSrc;
+      this.animations[key].image = image;
+    }
+  }
+
+  switchSprite(key) {
+    if (this.image === this.animations[key]) {
+      console.log("same key");
+      return;
+    } else {
+      this.image = this.animations[key].image;
+      console.log(this.image);
+    }
   }
 
   update() {
@@ -35,7 +70,6 @@ class Player extends Sprite {
   }
 
   updateHitbox() {
-    this.collisionBlocks = collisionBlocks;
     this.hitbox = {
       position: {
         x: this.position.x + 35,
