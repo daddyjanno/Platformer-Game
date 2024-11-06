@@ -10,6 +10,6 @@
 - [x] Hitbox implementation
 - [x] Sprite swapping
 - [x] Platform jumping
-- [ ] Horizontal camera panning
+- [x] Horizontal camera panning
 - [ ] Vertical camera panning
 - [ ] Next steps
