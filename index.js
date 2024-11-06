@@ -96,20 +96,17 @@ function animate() {
     player.lastDirection = "left";
     player.switchSprite("RunLeft");
     player.velocity.x = -2;
+  } else if (keys.q.pressed) {
+    player.switchSprite("Attack1");
+  } else if (keys.s.pressed) {
+    player.switchSprite("Attack2");
+  } else if (keys.d.pressed) {
+    player.switchSprite("Attack3");
   } else if (player.velocity.y === 0) {
     if (player.lastDirection === "right") {
       player.switchSprite("Idle");
     } else {
       player.switchSprite("IdleLeft");
-    }
-    if (keys.q.pressed) {
-      player.switchSprite("Attack1");
-    }
-    if (keys.s.pressed) {
-      player.switchSprite("Attack2");
-    }
-    if (keys.d.pressed) {
-      player.switchSprite("Attack3");
     }
   }
 
