@@ -44,13 +44,28 @@ const animations = {
     frameRate: 4,
     frameBuffer: 6,
   },
+  Attack1Left: {
+    imageSrc: "./img/warrior/Attack1Left.png",
+    frameRate: 4,
+    frameBuffer: 6,
+  },
   Attack2: {
     imageSrc: "./img/warrior/Attack2.png",
     frameRate: 4,
     frameBuffer: 6,
   },
+  Attack2Left: {
+    imageSrc: "./img/warrior/Attack2Left.png",
+    frameRate: 4,
+    frameBuffer: 6,
+  },
   Attack3: {
     imageSrc: "./img/warrior/Attack3.png",
+    frameRate: 4,
+    frameBuffer: 6,
+  },
+  Attack3Left: {
+    imageSrc: "./img/warrior/Attack3Left.png",
     frameRate: 4,
     frameBuffer: 6,
   },
