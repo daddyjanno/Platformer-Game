@@ -88,7 +88,13 @@ function animate() {
   player.update();
 
   player.velocity.x = 0;
-  if (keys.right.pressed) {
+  if (keys.q.pressed) {
+    player.switchSprite("Attack1");
+  } else if (keys.s.pressed) {
+    player.switchSprite("Attack2");
+  } else if (keys.d.pressed) {
+    player.switchSprite("Attack3");
+  } else if (keys.right.pressed) {
     player.lastDirection = "right";
     player.switchSprite("Run");
     player.velocity.x = 2;
@@ -96,12 +102,6 @@ function animate() {
     player.lastDirection = "left";
     player.switchSprite("RunLeft");
     player.velocity.x = -2;
-  } else if (keys.q.pressed) {
-    player.switchSprite("Attack1");
-  } else if (keys.s.pressed) {
-    player.switchSprite("Attack2");
-  } else if (keys.d.pressed) {
-    player.switchSprite("Attack3");
   } else if (player.velocity.y === 0) {
     if (player.lastDirection === "right") {
       player.switchSprite("Idle");
@@ -111,13 +111,25 @@ function animate() {
   }
 
   if (player.velocity.y < 0) {
-    if (player.lastDirection === "right") {
+    if (keys.q.pressed) {
+      player.switchSprite("Attack1");
+    } else if (keys.s.pressed) {
+      player.switchSprite("Attack2");
+    } else if (keys.d.pressed) {
+      player.switchSprite("Attack3");
+    } else if (player.lastDirection === "right") {
       player.switchSprite("Jump");
     } else {
       player.switchSprite("JumpLeft");
     }
   } else if (player.velocity.y > 0) {
-    if (player.lastDirection === "right") {
+    if (keys.q.pressed) {
+      player.switchSprite("Attack1");
+    } else if (keys.s.pressed) {
+      player.switchSprite("Attack2");
+    } else if (keys.d.pressed) {
+      player.switchSprite("Attack3");
+    } else if (player.lastDirection === "right") {
       player.switchSprite("Fall");
     } else {
       player.switchSprite("FallLeft");
