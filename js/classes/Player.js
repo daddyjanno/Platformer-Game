@@ -43,7 +43,6 @@ class Player extends Sprite {
     this.image = this.animations[key].image;
     this.frameBuffer = this.animations[key].frameBuffer;
     this.frameRate = this.animations[key].frameRate;
-    console.log(this.image);
   }
 
   update() {
