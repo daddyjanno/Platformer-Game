@@ -122,6 +122,15 @@ class Player extends Sprite {
     }
   }
 
+  checkForVerticalCanvasCollision() {
+    if (
+      this.hitbox.position.y + this.velocity.y >= 1024 ||
+      this.hitbox.position.y + this.velocity.y <= 0
+    ) {
+      this.velocity.y = 0;
+    }
+  }
+
   shouldPanCameraToTheLeft({ canvas, camera }) {
     const cameraBoxRightSide = this.cameraBox.position.x + this.cameraBox.width;
     const scaledDownCanvasWidth = canvas.width / 4;
@@ -132,7 +141,6 @@ class Player extends Sprite {
       cameraBoxRightSide >=
       scaledDownCanvasWidth + Math.abs(camera.position.x)
     ) {
-      console.log("translate to the left");
       camera.position.x -= this.velocity.x;
     }
   }
@@ -141,6 +149,27 @@ class Player extends Sprite {
 
     if (this.cameraBox.position.x <= Math.abs(camera.position.x)) {
       camera.position.x -= this.velocity.x;
+    }
+  }
+
+  shouldPanCameraDown({ canvas, camera }) {
+    if (this.cameraBox.position.y + player.velocity.y <= 0) return;
+
+    if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
+      camera.position.y -= this.velocity.y;
+    }
+  }
+  shouldPanCameraUp({ canvas, camera }) {
+    const cameraBoxDownSide = this.cameraBox.position.y + this.cameraBox.height;
+    const scaledDownCanvasHeight = canvas.height / 4;
+    if (cameraBoxDownSide >= 1024) return;
+
+    if (
+      cameraBoxDownSide >=
+      scaledDownCanvasHeight + Math.abs(camera.position.y)
+    ) {
+      console.log("should pan down");
+      camera.position.y -= this.velocity.y;
     }
   }
 
