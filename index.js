@@ -88,12 +88,15 @@ function animate() {
   context.scale(4, 4);
   context.translate(camera.position.x, camera.position.y);
   background.update();
-  collisionBlocks.forEach((collisionBlock) => {
-    collisionBlock.update();
-  });
-  platformCollisionBlocks.forEach((collisionBlock) => {
-    collisionBlock.update();
-  });
+
+  // coloring blocks:
+  // collisionBlocks.forEach((collisionBlock) => {
+  //   collisionBlock.update();
+  // });
+  // platformCollisionBlocks.forEach((collisionBlock) => {
+  //   collisionBlock.update();
+  // });
+
   player.checkForHorizontalCanvasCollision();
   player.checkForVerticalCanvasCollision();
   player.update();
