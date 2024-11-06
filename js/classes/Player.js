@@ -168,7 +168,6 @@ class Player extends Sprite {
       cameraBoxDownSide >=
       scaledDownCanvasHeight + Math.abs(camera.position.y)
     ) {
-      console.log("should pan down");
       camera.position.y -= this.velocity.y;
     }
   }
