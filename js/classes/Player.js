@@ -73,13 +73,13 @@ class Player extends Sprite {
     // );
 
     // draws out the camera Box
-    context.fillStyle = "rgba(0, 0, 255, 0.2)";
-    context.fillRect(
-      this.cameraBox.position.x,
-      this.cameraBox.position.y,
-      this.cameraBox.width,
-      this.cameraBox.height
-    );
+    // context.fillStyle = "rgba(0, 0, 255, 0.2)";
+    // context.fillRect(
+    //   this.cameraBox.position.x,
+    //   this.cameraBox.position.y,
+    //   this.cameraBox.width,
+    //   this.cameraBox.height
+    // );
 
     this.draw();
 
@@ -153,7 +153,7 @@ class Player extends Sprite {
   }
 
   shouldPanCameraDown({ canvas, camera }) {
-    if (this.cameraBox.position.y + player.velocity.y <= 0) return;
+    if (this.cameraBox.position.y + this.velocity.y <= 0) return;
 
     if (this.cameraBox.position.y <= Math.abs(camera.position.y)) {
       camera.position.y -= this.velocity.y;
@@ -162,7 +162,7 @@ class Player extends Sprite {
   shouldPanCameraUp({ canvas, camera }) {
     const cameraBoxDownSide = this.cameraBox.position.y + this.cameraBox.height;
     const scaledDownCanvasHeight = canvas.height / 4;
-    if (cameraBoxDownSide >= 1024) return;
+    if (cameraBoxDownSide >= canvas.height) return;
 
     if (
       cameraBoxDownSide >=
