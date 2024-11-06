@@ -70,10 +70,12 @@ platformCollisions2D.forEach((row, y) => {
   });
 });
 
+const backgroundImageHeight = 432;
+
 const camera = {
   position: {
     x: 0,
-    y: 0,
+    y: -backgroundImageHeight + scaledCanvas.height,
   },
 };
 
@@ -84,10 +86,7 @@ function animate() {
 
   context.save();
   context.scale(4, 4);
-  context.translate(
-    camera.position.x,
-    -background.image.height + scaledCanvas.height
-  );
+  context.translate(camera.position.x, camera.position.y);
   background.update();
   collisionBlocks.forEach((collisionBlock) => {
     collisionBlock.update();
@@ -96,6 +95,7 @@ function animate() {
     collisionBlock.update();
   });
   player.checkForHorizontalCanvasCollision();
+  player.checkForVerticalCanvasCollision();
   player.update();
 
   player.velocity.x = 0;
@@ -124,6 +124,7 @@ function animate() {
   }
 
   if (player.velocity.y < 0) {
+    player.shouldPanCameraDown({ canvas, camera });
     if (keys.q.pressed) {
       player.switchSprite("Attack1");
     } else if (keys.s.pressed) {
@@ -136,6 +137,7 @@ function animate() {
       player.switchSprite("JumpLeft");
     }
   } else if (player.velocity.y > 0) {
+    player.shouldPanCameraUp({ canvas, camera });
     if (keys.q.pressed) {
       player.switchSprite("Attack1");
     } else if (keys.s.pressed) {
