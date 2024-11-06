@@ -42,16 +42,16 @@ const animations = {
   Attack1: {
     imageSrc: "./img/warrior/Attack1.png",
     frameRate: 4,
-    frameBuffer: 1,
+    frameBuffer: 6,
   },
   Attack2: {
     imageSrc: "./img/warrior/Attack2.png",
     frameRate: 4,
-    frameBuffer: 1,
+    frameBuffer: 6,
   },
   Attack3: {
     imageSrc: "./img/warrior/Attack3.png",
     frameRate: 4,
-    frameBuffer: 1,
+    frameBuffer: 6,
   },
 };
