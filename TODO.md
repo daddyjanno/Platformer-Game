@@ -11,5 +11,5 @@
 - [x] Sprite swapping
 - [x] Platform jumping
 - [x] Horizontal camera panning
-- [ ] Vertical camera panning
+- [x] Vertical camera panning
 - [ ] Next steps
