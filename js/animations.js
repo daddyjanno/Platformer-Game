@@ -22,22 +22,22 @@ const animations = {
   Jump: {
     imageSrc: "./img/warrior/Jump.png",
     frameRate: 2,
-    frameBuffer: 3,
+    frameBuffer: 8,
   },
   JumpLeft: {
     imageSrc: "./img/warrior/JumpLeft.png",
     frameRate: 2,
-    frameBuffer: 3,
+    frameBuffer: 8,
   },
   Fall: {
     imageSrc: "./img/warrior/Fall.png",
     frameRate: 2,
-    frameBuffer: 3,
+    frameBuffer: 8,
   },
   FallLeft: {
     imageSrc: "./img/warrior/FallLeft.png",
     frameRate: 2,
-    frameBuffer: 3,
+    frameBuffer: 8,
   },
   Attack1: {
     imageSrc: "./img/warrior/Attack1.png",
