@@ -18,18 +18,6 @@ const player = new Player({
   animations: animations,
 });
 
-const keys = {
-  right: {
-    pressed: false,
-  },
-  left: {
-    pressed: false,
-  },
-  up: {
-    pressed: false,
-  },
-};
-
 const background = new Sprite({
   position: { x: 0, y: 0 },
   imageSrc: "./img/background.png",
@@ -114,6 +102,15 @@ function animate() {
     } else {
       player.switchSprite("IdleLeft");
     }
+    if (keys.q.pressed) {
+      player.switchSprite("Attack1");
+    }
+    if (keys.s.pressed) {
+      player.switchSprite("Attack2");
+    }
+    if (keys.d.pressed) {
+      player.switchSprite("Attack3");
+    }
   }
 
   if (player.velocity.y < 0) {
@@ -129,6 +126,7 @@ function animate() {
       player.switchSprite("FallLeft");
     }
   }
+
   context.restore();
 }
 animate();
@@ -144,6 +142,15 @@ window.addEventListener("keydown", (event) => {
     case "ArrowUp":
       player.velocity.y = -4;
       break;
+    case "q":
+      keys.q.pressed = true;
+      break;
+    case "s":
+      keys.s.pressed = true;
+      break;
+    case "d":
+      keys.d.pressed = true;
+      break;
 
     default:
       break;
@@ -157,7 +164,15 @@ window.addEventListener("keyup", (event) => {
     case "ArrowLeft":
       keys.left.pressed = false;
       break;
-
+    case "q":
+      keys.q.pressed = false;
+      break;
+    case "s":
+      keys.s.pressed = false;
+      break;
+    case "d":
+      keys.d.pressed = false;
+      break;
     default:
       break;
   }
