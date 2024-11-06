@@ -101,24 +101,27 @@ function animate() {
   const playerDirection = player.lastDirection === "right" ? "" : "Left";
 
   player.velocity.x = 0;
-  if (keys.q.pressed) {
-    player.switchSprite(`Attack1${playerDirection}`);
-  } else if (keys.s.pressed) {
-    player.switchSprite(`Attack2${playerDirection}`);
-  } else if (keys.d.pressed) {
-    player.switchSprite(`Attack3${playerDirection}`);
-  } else if (keys.right.pressed) {
-    player.lastDirection = "right";
-    player.switchSprite("Run");
-    player.velocity.x = 2;
-    player.shouldPanCameraToTheLeft({ canvas, camera });
-  } else if (keys.left.pressed) {
-    player.lastDirection = "left";
-    player.switchSprite("RunLeft");
-    player.velocity.x = -2;
-    player.shouldPanCameraToTheRight({ canvas, camera });
-  } else if (player.velocity.y === 0) {
-    player.switchSprite(`Idle${playerDirection}`);
+
+  if (player.velocity.x === 0) {
+    if (keys.q.pressed) {
+      player.switchSprite(`Attack1${playerDirection}`);
+    } else if (keys.s.pressed) {
+      player.switchSprite(`Attack2${playerDirection}`);
+    } else if (keys.d.pressed) {
+      player.switchSprite(`Attack3${playerDirection}`);
+    } else if (keys.right.pressed) {
+      player.lastDirection = "right";
+      player.switchSprite("Run");
+      player.velocity.x = 2;
+      player.shouldPanCameraToTheLeft({ canvas, camera });
+    } else if (keys.left.pressed) {
+      player.lastDirection = "left";
+      player.switchSprite("RunLeft");
+      player.velocity.x = -2;
+      player.shouldPanCameraToTheRight({ canvas, camera });
+    } else if (player.velocity.y === 0) {
+      player.switchSprite(`Idle${playerDirection}`);
+    }
   }
 
   if (player.velocity.y < 0) {
