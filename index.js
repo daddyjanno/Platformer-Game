@@ -95,6 +95,7 @@ function animate() {
   platformCollisionBlocks.forEach((collisionBlock) => {
     collisionBlock.update();
   });
+  player.checkForHorizontalCanvasCollision();
   player.update();
 
   player.velocity.x = 0;
