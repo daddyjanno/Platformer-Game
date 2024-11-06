@@ -34,6 +34,15 @@ class Player extends Sprite {
       image.src = animations[key].imageSrc;
       this.animations[key].image = image;
     }
+
+    this.cameraBox = {
+      position: {
+        x: this.position.x,
+        y: this.position.y,
+      },
+      width: 200,
+      height: 80,
+    };
   }
 
   switchSprite(key) {
@@ -48,8 +57,9 @@ class Player extends Sprite {
   update() {
     this.updateFrames();
     this.updateHitbox();
+    this.updateCameraBox();
 
-    // draws out hte image
+    // draws out the image
     // context.fillStyle = "rgba(0, 255, 0, 0.2)";
     // context.fillRect(this.position.x, this.position.y, this.width, this.height);
 
@@ -61,6 +71,16 @@ class Player extends Sprite {
     //   this.hitbox.width,
     //   this.hitbox.height
     // );
+
+    // draws out the camera Box
+    context.fillStyle = "rgba(0, 0, 255, 0.2)";
+    context.fillRect(
+      this.cameraBox.position.x,
+      this.cameraBox.position.y,
+      this.cameraBox.width,
+      this.cameraBox.height
+    );
+
     this.draw();
 
     this.position.x += this.velocity.x;
@@ -80,6 +100,39 @@ class Player extends Sprite {
       width: 14,
       height: 27,
     };
+  }
+
+  updateCameraBox() {
+    this.cameraBox = {
+      position: {
+        x: this.position.x - 50,
+        y: this.position.y,
+      },
+      width: 200,
+      height: 80,
+    };
+  }
+
+  shouldPanCameraToTheLeft({ canvas, camera }) {
+    const cameraBoxRightSide = this.cameraBox.position.x + this.cameraBox.width;
+    const scaledDownCanvasWidth = canvas.width / 4;
+
+    if (cameraBoxRightSide >= 576) return;
+
+    if (
+      cameraBoxRightSide >=
+      scaledDownCanvasWidth + Math.abs(camera.position.x)
+    ) {
+      console.log("translate to the left");
+      camera.position.x -= this.velocity.x;
+    }
+  }
+  shouldPanCameraToTheRight({ canvas, camera }) {
+    if (this.cameraBox.position.x <= 0) return;
+
+    if (this.cameraBox.position.x <= Math.abs(camera.position.x)) {
+      camera.position.x -= this.velocity.x;
+    }
   }
 
   checkForHorizontalCollisions() {
