@@ -70,6 +70,13 @@ platformCollisions2D.forEach((row, y) => {
   });
 });
 
+const camera = {
+  position: {
+    x: 0,
+    y: 0,
+  },
+};
+
 function animate() {
   window.requestAnimationFrame(animate);
   context.fillStyle = "white";
@@ -77,7 +84,10 @@ function animate() {
 
   context.save();
   context.scale(4, 4);
-  context.translate(0, -background.image.height + scaledCanvas.height);
+  context.translate(
+    camera.position.x,
+    -background.image.height + scaledCanvas.height
+  );
   background.update();
   collisionBlocks.forEach((collisionBlock) => {
     collisionBlock.update();
@@ -98,10 +108,12 @@ function animate() {
     player.lastDirection = "right";
     player.switchSprite("Run");
     player.velocity.x = 2;
+    player.shouldPanCameraToTheLeft({ canvas, camera });
   } else if (keys.left.pressed) {
     player.lastDirection = "left";
     player.switchSprite("RunLeft");
     player.velocity.x = -2;
+    player.shouldPanCameraToTheRight({ canvas, camera });
   } else if (player.velocity.y === 0) {
     if (player.lastDirection === "right") {
       player.switchSprite("Idle");
