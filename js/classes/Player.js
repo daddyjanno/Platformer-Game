@@ -113,6 +113,15 @@ class Player extends Sprite {
     };
   }
 
+  checkForHorizontalCanvasCollision() {
+    if (
+      this.hitbox.position.x + this.hitbox.width + this.velocity.x >= 576 ||
+      this.hitbox.position.x + this.velocity.x <= 0
+    ) {
+      this.velocity.x = 0;
+    }
+  }
+
   shouldPanCameraToTheLeft({ canvas, camera }) {
     const cameraBoxRightSide = this.cameraBox.position.x + this.cameraBox.width;
     const scaledDownCanvasWidth = canvas.width / 4;
