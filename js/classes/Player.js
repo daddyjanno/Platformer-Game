@@ -35,13 +35,12 @@ class Player extends Sprite {
   }
 
   switchSprite(key) {
-    if (this.image === this.animations[key] || !this.loaded) {
-      return;
-    } else {
-      this.image = this.animations[key].image;
-      this.frameBuffer = this.animations[key].frameBuffer;
-      this.frameRate = this.animations[key].frameRate;
-    }
+    if (this.image === this.animations[key].image || !this.loaded) return;
+
+    this.currentFrame = 0;
+    this.image = this.animations[key].image;
+    this.frameBuffer = this.animations[key].frameBuffer;
+    this.frameRate = this.animations[key].frameRate;
   }
 
   update() {
