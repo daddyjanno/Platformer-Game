@@ -98,13 +98,15 @@ function animate() {
   player.checkForVerticalCanvasCollision();
   player.update();
 
+  const playerDirection = player.lastDirection === "right" ? "" : "Left";
+
   player.velocity.x = 0;
   if (keys.q.pressed) {
-    player.switchSprite("Attack1");
+    player.switchSprite(`Attack1${playerDirection}`);
   } else if (keys.s.pressed) {
-    player.switchSprite("Attack2");
+    player.switchSprite(`Attack2${playerDirection}`);
   } else if (keys.d.pressed) {
-    player.switchSprite("Attack3");
+    player.switchSprite(`Attack3${playerDirection}`);
   } else if (keys.right.pressed) {
     player.lastDirection = "right";
     player.switchSprite("Run");
@@ -116,21 +118,17 @@ function animate() {
     player.velocity.x = -2;
     player.shouldPanCameraToTheRight({ canvas, camera });
   } else if (player.velocity.y === 0) {
-    if (player.lastDirection === "right") {
-      player.switchSprite("Idle");
-    } else {
-      player.switchSprite("IdleLeft");
-    }
+    player.switchSprite(`Idle${playerDirection}`);
   }
 
   if (player.velocity.y < 0) {
     player.shouldPanCameraDown({ canvas, camera });
     if (keys.q.pressed) {
-      player.switchSprite("Attack1");
+      player.switchSprite(`Attack1${playerDirection}`);
     } else if (keys.s.pressed) {
-      player.switchSprite("Attack2");
+      player.switchSprite(`Attack2${playerDirection}`);
     } else if (keys.d.pressed) {
-      player.switchSprite("Attack3");
+      player.switchSprite(`Attack3${playerDirection}`);
     } else if (player.lastDirection === "right") {
       player.switchSprite("Jump");
     } else {
@@ -139,11 +137,11 @@ function animate() {
   } else if (player.velocity.y > 0) {
     player.shouldPanCameraUp({ canvas, camera });
     if (keys.q.pressed) {
-      player.switchSprite("Attack1");
+      player.switchSprite(`Attack1${playerDirection}`);
     } else if (keys.s.pressed) {
-      player.switchSprite("Attack2");
+      player.switchSprite(`Attack2${playerDirection}`);
     } else if (keys.d.pressed) {
-      player.switchSprite("Attack3");
+      player.switchSprite(`Attack3${playerDirection}`);
     } else if (player.lastDirection === "right") {
       player.switchSprite("Fall");
     } else {
